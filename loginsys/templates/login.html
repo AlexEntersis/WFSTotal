@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% block current %}
+<div class="row">
+  <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <form action="/auth/login/" method="post">
+
+              <input placeholder="login" size="10" type="text" name="username" id="username" class="form-control input-lg" style="right: -19%; width: 280px; position: relative; margin-top: 89px;  text-align: center;font-family: 'Myriad Pro'; text-color: #eeeeee; z-index: 1" >
+              <input placeholder="password" type="password" name="password" id="password" class="form-control input-lg" style="right:-19%; width: 280px; position: relative; z-index: 1; margin-top: 45px;  text-align: center;font-family: 'Myriad Pro'; text-color: #eeeeee;" >
+              {% if login_error %}
+                  <label class="error">{{ login_error }}</label>
+              {% endif %}
+              <div class="Rounded_Rectangle_login"></div>
+              <p><a href="/auth/reset/">Forgot Your password?</a></p>
+              <div id="progress-button" class="progress-button" style="margin-top:60px">
+                  <button><span>Submit</span></button>
+              </div>
+          </form>
+      </div>
+</div>
+{% endblock %}

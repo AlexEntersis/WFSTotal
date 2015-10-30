@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{%  block current %}
+    {% if user.is_superuser %}
+        <form method="post" action="/download_all/">
+             <p> Total number of profiles:  {{ total }} </p>
+             <div class="Rounded_Rectangle_statistics"></div>
+             <div id="progress-button" class="progress-button" style="margin-top:-150px">
+                <button><span>Submit</span></button>
+             </div>
+        </form>
+    {% endif %}
+{% endblock %}

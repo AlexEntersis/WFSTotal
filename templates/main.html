@@ -1,0 +1,50 @@
+{% load staticfiles %}
+
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script type="text/javascript">
+            $(document).ready(function() {
+                $('#file').change(function() {
+                    $('#file').each(function() {
+                        var name = this.value;
+                        reWin = /.*\\(.*)/;
+                        var fileTitle = name.replace(reWin, "$1");
+                        reUnix = /.*\/(.*)/;
+                        fileTitle = fileTitle.replace(reUnix, "$1");
+                        $('#namefile').html(fileTitle);
+                    });
+                });
+            });
+      </script>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>WFS Candidate Grabbing System</title>
+      <link rel="stylesheet" type="text/css" href="{% static "static/css/bootstrap.css" %}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  </head>
+
+<body style="background-color: #1c1c1c;">
+    <div class="top-bar">
+        <nav class="navbar navbar-inverse" style="height:20px;">
+            <ul class="nav navbar-nav navbar-right" style=" background-color: #757575;">
+                {% if user.is_authenticated %}
+                            <li type="button" class="active"><a href="/auth/logout/" style="text-decoration:none">Sign Out</a></li>
+                {% else %}
+                            <li type="button" class="active"><a href="/auth/login/" style="text-decoration:none">Sign In</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-left" style=" background-color: #757575;">
+                 {% if user.is_authenticated %}
+                            <li type="button" class="active"><a href="/parse/" style="text-decoration:none">Parse</a></li>
+                     {% if user.is_superuser %}
+
+                            <li type="button" class="active"><a href="/statistics/" style="text-decoration:none">Statistics</a></li>
+                     {% endif %}
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% block current %}{% endblock %}
+</body>

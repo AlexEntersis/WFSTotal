@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'basic_parser',
     'loginsys',
-    'haystack',
     'search',
     'django.contrib.admin',
     'django.contrib.auth',
